@@ -52,16 +52,22 @@ const StyledWrapper = styled.div`
     transition: 400ms;
   }
 
-  .button:hover {
-    background-color: transparent;
-  }
+  /* Guarded, because on a touch screen :hover latches after a tap and the
+     button would sit inverted until something else was tapped. Tailwind wraps
+     its own hover: utilities this way already; these rules are plain CSS, so
+     they need it spelled out. */
+  @media (hover: hover) {
+    .button:hover {
+      background-color: transparent;
+    }
 
-  .button:hover .text {
-    color: #181717;
-  }
+    .button:hover .text {
+      color: #181717;
+    }
 
-  .button:hover svg path {
-    fill: #181717;
+    .button:hover svg path {
+      fill: #181717;
+    }
   }
 
   /* The component shipped with an unconditional outline the same colour as its
