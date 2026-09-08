@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Apollo Landing
 
-## Getting Started
+A single-page case study for Apollo, a reordering tool for wholesale buyers. It
+opens with a screenshot of the running app, explains what happens to a pasted
+list, then covers the four problems it addresses.
 
-First, run the development server:
+Next.js 16, React 19, Tailwind v4, plain JavaScript. No component library:
+styled-components is confined to `components/ui` for a single copied button,
+with its SSR registry wired into the root layout.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Structure
+
+```
+app/             root layout, opening section, screenshot
+components/      one component per section, plus Container and the grid
+                 background used behind the opening and the footer
+components/ui/   copied third-party components, isolated so their styling
+                 approach does not leak into the rest
+lib/             shared constants and the styled-components SSR registry
+public/          the app screenshot
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Running it
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm install
+npm run dev
+```

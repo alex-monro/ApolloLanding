@@ -1,26 +1,64 @@
 @import "tailwindcss";
 
+/* Tokens only. Everything else is Tailwind utilities in the components.
+   White ground, dark text. Light only for now; no accent colour until one
+   is picked. */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  --ground: #ffffff;
+  --ink: #181818;
+  --muted: #6b7280;
+  --faint: #9ca3af;
+  --line: #e8e8e8;
+  --raised: #fafafa;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* The flow diagram draws its connectors left to right, once, on load. Only the
+   lines and arrowheads animate. Every step's icon, heading and body is fully
+   visible at rest, so nothing readable is ever waiting on motion. */
+@keyframes draw-line {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* The page has hover transitions (the GitHub button inverts over 400ms, the
+   header icon fades) and the flow draw above. Honour the OS setting that asks
+   for less of that. Delay is reset too, or a delayed element sits invisible
+   through its stagger. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@theme inline {
+  --color-ground: var(--ground);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-raised: var(--raised);
+
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
 }
