@@ -95,7 +95,11 @@ export default function RequestFlow() {
   const [ref, inView] = useInView();
 
   return (
-    <ol ref={ref} className="flex w-full flex-col gap-10 lg:flex-row lg:gap-0">
+    <ol
+      ref={ref}
+      role="list"
+      className="flex w-full flex-col gap-10 xl:flex-row xl:gap-0"
+    >
       {steps.map((step, index) => {
         const Icon = step.icon;
         const isLast = index === steps.length - 1;
@@ -119,7 +123,7 @@ export default function RequestFlow() {
         };
 
         return (
-          <li key={step.title} className="min-w-0 flex-1 lg:pr-8 lg:last:pr-0">
+          <li key={step.title} className="min-w-0 flex-1 xl:pr-8 xl:last:pr-0">
             <div className="flex items-center">
               <span
                 className={`flex size-10 shrink-0 items-center justify-center rounded-full border-2 text-ink ${
@@ -136,7 +140,7 @@ export default function RequestFlow() {
                   dead space. */}
               <span
                 aria-hidden="true"
-                className="ml-4 hidden flex-1 items-center lg:flex"
+                className="ml-4 hidden flex-1 items-center xl:flex"
               >
                 <span
                   className={`h-0 flex-1 origin-left border-t-2 ${line} ${lineAnim}`}
@@ -170,7 +174,7 @@ export default function RequestFlow() {
             {!isLast && (
               <span
                 aria-hidden="true"
-                className="mt-6 flex w-10 flex-col items-center lg:hidden"
+                className="mt-6 flex w-10 flex-col items-center xl:hidden"
               >
                 <span className={`h-8 w-0 border-l-2 ${line}`} />
                 <ArrowDown

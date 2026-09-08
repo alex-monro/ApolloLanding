@@ -5,16 +5,12 @@
    column would force it down to a size where its own text stops being
    readable. */
 
-export default function Container({
-  as: Tag = "div",
-  className = "",
-  children,
-}) {
+export default function Container({ className = "", children }) {
   return (
-    <Tag
+    <div
       className={`mx-auto w-full max-w-[1600px] px-8 sm:px-10 lg:px-16 ${className}`}
     >
       {children}
-    </Tag>
+    </div>
   );
 }

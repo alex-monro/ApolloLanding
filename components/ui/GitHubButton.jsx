@@ -63,6 +63,16 @@ const StyledWrapper = styled.div`
   .button:hover svg path {
     fill: #181717;
   }
+
+  /* The component shipped with an unconditional outline the same colour as its
+     own fill, drawn inside it by a negative offset. That silently replaced the
+     browser's focus ring, so the page's one call to action was the only
+     focusable element with no visible focus state. Positive offset, outside
+     the fill. */
+  .button:focus-visible {
+    outline: 3px solid #181717;
+    outline-offset: 3px;
+  }
 `;
 
 export default GitHubButton;

@@ -9,10 +9,11 @@ import { REPO_URL } from "@/lib/constants";
 /* Opening: title, standfirst, and the link, stacked left in one column, then
    the app full width below.
 
-   The reference (inspiration/image.png) splits these across two columns with a
-   billboard-sized heading. That shape only exists because its right column held
-   two CTA buttons. With no CTAs the split has nothing to do, and the scale made
-   the words compete with the screenshot, which is the actual evidence. */
+   An earlier version split these across two columns under a billboard-sized
+   heading, copied from a SaaS landing page. That shape only exists because its
+   right column held two CTA buttons. With no CTAs the split has nothing to do,
+   and the scale made the words compete with the screenshot, which is the
+   actual evidence. */
 
 export default function Home() {
   return (
@@ -61,7 +62,7 @@ export default function Home() {
                 width={1901}
                 height={947}
                 priority
-                sizes="100vw"
+                sizes="(min-width: 1600px) 1472px, 100vw"
                 className="w-full"
               />
             </div>

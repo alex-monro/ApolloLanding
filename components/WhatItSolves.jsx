@@ -2,10 +2,10 @@ import Container from "./Container";
 
 /* First section below the opening.
 
-   Paired rows with hairlines rather than a three-across card grid, per
-   DESIGN.md 2.0: below the opening the page runs closer to prose with figures,
-   and card rows are marketing furniture. The two-column pairing also echoes the
-   app's own tables, which is the right visual grammar for the subject. */
+   Paired rows with hairlines rather than a three-across card grid. Below the
+   opening the page runs closer to prose with figures, and card rows are
+   marketing furniture. The two-column pairing also echoes the app's own
+   tables, which is the right visual grammar for the subject. */
 
 const problems = [
   {

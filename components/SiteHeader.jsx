@@ -10,8 +10,7 @@ import { REPO_URL } from "@/lib/constants";
    and it was doing more SaaS signalling than anything else left after the CTAs,
    the split, and the full-viewport hero were removed.
 
-   Rocket is the same lucide icon Apollo uses in its own sidebar, per the
-   logo/rocket-icon branch. */
+   Rocket is the same lucide icon Apollo uses in its own sidebar. */
 
 export default function SiteHeader() {
   return (

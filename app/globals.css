@@ -9,7 +9,6 @@
   --ground: #ffffff;
   --ink: #181818;
   --muted: #6b7280;
-  --faint: #9ca3af;
   --line: #e8e8e8;
   --raised: #fafafa;
 }
@@ -55,7 +54,6 @@
   --color-ground: var(--ground);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
-  --color-faint: var(--faint);
   --color-line: var(--line);
   --color-raised: var(--raised);
 
