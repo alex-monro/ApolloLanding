@@ -1,19 +1,21 @@
 "use client";
 
-/* uiverse component, kept as it came: styled-components, its own file, not
-   mixed in with the Tailwind components.
+/* uiverse component, generalised so the GitHub and live-site buttons share one
+   styled block instead of duplicating it. Takes an icon and a label.
 
-   Two changes only: it renders an <a> rather than a <button> because it
-   navigates, and the label and href are props. Styles are untouched. */
+   Changes from the original: it renders an <a> because it navigates, the icon
+   and label are props, and colour is set once on .button rather than separately
+   on the text and the svg. That last one matters: the original filled the svg
+   path directly, which works for the GitHub mark but not for a lucide icon,
+   which is stroked rather than filled. Both follow currentColor. */
 
 import styled from "styled-components";
-import GitHubMark from "../GitHubMark";
 
-const GitHubButton = ({ href, label = "View on GitHub" }) => {
+const LinkButton = ({ href, icon, label }) => {
   return (
     <StyledWrapper>
       <a className="button" href={href}>
-        <GitHubMark className="size-6" />
+        {icon}
         <p className="text">{label}</p>
       </a>
     </StyledWrapper>
@@ -28,6 +30,7 @@ const StyledWrapper = styled.div`
     padding: 10px 15px;
     gap: 15px;
     background-color: #181717;
+    color: white;
     outline: 3px #181717 solid;
     outline-offset: -3px;
     border-radius: 5px;
@@ -39,17 +42,8 @@ const StyledWrapper = styled.div`
   }
 
   .button .text {
-    color: white;
     font-weight: 700;
     font-size: 1em;
-    transition: 400ms;
-  }
-
-  /* The shared mark paints with currentColor, so the base fill is set here
-     rather than baked into the path. */
-  .button svg path {
-    fill: white;
-    transition: 400ms;
   }
 
   /* Guarded, because on a touch screen :hover latches after a tap and the
@@ -59,26 +53,18 @@ const StyledWrapper = styled.div`
   @media (hover: hover) {
     .button:hover {
       background-color: transparent;
-    }
-
-    .button:hover .text {
       color: #181717;
-    }
-
-    .button:hover svg path {
-      fill: #181717;
     }
   }
 
   /* The component shipped with an unconditional outline the same colour as its
      own fill, drawn inside it by a negative offset. That silently replaced the
-     browser's focus ring, so the page's one call to action was the only
-     focusable element with no visible focus state. Positive offset, outside
-     the fill. */
+     browser's focus ring, leaving no visible focus state. Positive offset,
+     outside the fill. */
   .button:focus-visible {
     outline: 3px solid #181717;
     outline-offset: 3px;
   }
 `;
 
-export default GitHubButton;
+export default LinkButton;

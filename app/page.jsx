@@ -3,8 +3,10 @@ import Container from "@/components/Container";
 import GridBackground from "@/components/GridBackground";
 import WhatItSolves from "@/components/WhatItSolves";
 import HowItWorks from "@/components/HowItWorks";
-import GitHubButton from "@/components/ui/GitHubButton";
-import { REPO_URL } from "@/lib/constants";
+import { ExternalLink } from "lucide-react";
+import GitHubMark from "@/components/GitHubMark";
+import LinkButton from "@/components/ui/LinkButton";
+import { REPO_URL, DEMO_URL } from "@/lib/constants";
 
 /* Opening: title, standfirst, and the link, stacked left in one column, then
    the app full width below.
@@ -35,8 +37,25 @@ export default function Home() {
               says plainly when it can&rsquo;t.
             </p>
 
-            <div className="mt-2">
-              <GitHubButton href={REPO_URL} />
+            {/* Wraps rather than shrinks, so neither button gets squeezed on a
+                narrow screen. */}
+            <div className="mt-2 flex flex-wrap gap-4">
+              <LinkButton
+                href={DEMO_URL}
+                icon={
+                  <ExternalLink
+                    className="size-6"
+                    strokeWidth={2}
+                    aria-hidden="true"
+                  />
+                }
+                label="View live demo"
+              />
+              <LinkButton
+                href={REPO_URL}
+                icon={<GitHubMark className="size-6" />}
+                label="View on GitHub"
+              />
             </div>
           </div>
         </Container>

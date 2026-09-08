@@ -1,31 +1,38 @@
-import Container from "./Container";
-import GridBackground from "./GridBackground";
-import { REPO_URL, TEAM_URL, TEAM_NAME } from "@/lib/constants";
+import StarField from "./StarField";
+import { REPO_URL, DEMO_URL, TEAM_URL, TEAM_NAME } from "@/lib/constants";
+
+/* Same shape as Radar's footer: dark ground, stars behind, centred stack. */
 
 const linkStyle =
-  "text-ink underline underline-offset-4 hover:no-underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink";
+  "underline underline-offset-4 hover:no-underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ground";
 
 export default function SiteFooter() {
   return (
-    <footer className="relative isolate overflow-hidden border-t border-line py-12">
-      <GridBackground anchor="bottom" />
-      <Container>
-        <p className="font-heading text-base font-semibold tracking-tight text-ink">
-          Apollo
-        </p>
+    <footer className="relative overflow-hidden bg-ink px-8 py-24 text-ground">
+      <StarField />
 
-        <p className="mt-2 text-sm text-muted">
+      <div className="relative z-10 flex flex-col items-center gap-3 text-center">
+        <span className="font-heading text-xl font-semibold tracking-tight">
+          Apollo
+        </span>
+
+        <span>A reordering tool for wholesale buyers.</span>
+
+        <span>
           Built by{" "}
           <a href={TEAM_URL} className={linkStyle}>
             {TEAM_NAME}
           </a>
-          . Source on{" "}
-          <a href={REPO_URL} className={linkStyle}>
-            GitHub
+          .{" "}
+          <a href={DEMO_URL} className={linkStyle}>
+            Live demo
           </a>
-          .
-        </p>
-      </Container>
+          {" · "}
+          <a href={REPO_URL} className={linkStyle}>
+            Source
+          </a>
+        </span>
+      </div>
     </footer>
   );
 }

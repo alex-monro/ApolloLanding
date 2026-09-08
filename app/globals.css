@@ -13,38 +13,13 @@
   --raised: #fafafa;
 }
 
-/* The flow diagram draws its connectors left to right, once, on load. Only the
-   lines and arrowheads animate. Every step's icon, heading and body is fully
-   visible at rest, so nothing readable is ever waiting on motion. */
-@keyframes draw-line {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* The page has hover transitions (the GitHub button inverts over 400ms, the
-   header icon fades) and the flow draw above. Honour the OS setting that asks
-   for less of that. Delay is reset too, or a delayed element sits invisible
-   through its stagger. */
+/* Nothing on the page animates. What remains is hover transitions: the buttons
+   invert over 400ms and the header icon fades. Honour the OS setting that asks
+   for less of that. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-delay: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
